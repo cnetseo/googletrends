@@ -23,8 +23,8 @@ def getGoogleTrends(keywords):
         if 'related_queries' in json:
             for query_type in ['rising', 'top']:
                 if query_type in json['related_queries']:
-                    queries = [(item.get('query', 'N/A'), item.get('extracted_value', 'N/A')) for item in json['related_queries'][query_type][:5]]
-                    with st.expander(f"Top 5 {query_type} queries for {keyword}"):
+                    queries = [(item.get('query', 'N/A'), item.get('extracted_value', 'N/A')) for item in json['related_queries'][query_type][:10]]
+                    with st.expander(f"Top 10 {query_type} queries for {keyword}"):
                          st.markdown('\n'.join(f'- [{query}](https://trends.google.com/trends/explore?date=now%204-H&geo=US&q={query.replace(" ", "%20")}&hl=en) - Value: {value}' for query, value in queries))
 
 
